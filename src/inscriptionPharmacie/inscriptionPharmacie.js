@@ -1,6 +1,6 @@
 import Navbar from "../Navbar/Navbar";
 import "./inscriptionPharmacie.css";
-
+import { Link } from "react-router-dom";
 import { Form, Input, Button, Select } from "antd";
 
 function inscriptionPharmacie() {
@@ -12,7 +12,7 @@ function inscriptionPharmacie() {
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        className="inscriC"
+        className="inscriP"
       >
         <Form.Item
           name="CIN"
@@ -60,7 +60,7 @@ function inscriptionPharmacie() {
             Confirmer
           </Button>
           <Button type="danger" htmlType="submit" shape="round">
-            S'inscrire
+            <Link to="/inscriptionCenter">S'inscrire</Link>
           </Button>
         </div>
       </Form>

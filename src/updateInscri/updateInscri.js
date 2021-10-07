@@ -5,14 +5,15 @@ function updateInscri() {
   return (
     <div>
       <Navbar />
-      <p>Mettre à jour votre inscription</p>
+
       <Form
         name="control-ref"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        className="inscriC"
+        className="update"
       >
+        <p className="para">Mettre à jour votre inscription</p>
         <Form.Item
           name="CIN"
           label="CIN:"
@@ -36,7 +37,7 @@ function updateInscri() {
         >
           <Input />
         </Form.Item>
-        <Button type="primary" block htmlType="submit" shape="round">
+        <Button type="primary" className="bt" htmlType="submit" shape="round">
           Mettre à jour
         </Button>
       </Form>

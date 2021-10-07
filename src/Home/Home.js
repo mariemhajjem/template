@@ -9,10 +9,10 @@ import tal from "../img/box-img2.jpg";
 import tal3 from "../img/tal3.jpg";
 
 const contentStyle = {
-  height: "550px",
+  height: "650px",
   color: "black",
   lineHeight: "160px",
-
+  innerHeight: "100%",
   background: "white",
 };
 

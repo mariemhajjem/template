@@ -9,7 +9,7 @@ function inscriptionCenter() {
   return (
     <div>
       <Navbar />
-      <p>Veuillez remplir ces champs en langue française</p>
+
       <Form
         name="control-ref"
         labelCol={{ span: 4 }}
@@ -17,6 +17,7 @@ function inscriptionCenter() {
         layout="horizontal"
         className="inscriC"
       >
+        <p className="parag">Veuillez remplir ces champs en langue française</p>
         <Form.Item
           name="CIN"
           label="CIN:"

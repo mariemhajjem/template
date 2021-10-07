@@ -5,14 +5,15 @@ function reportRdv() {
   return (
     <div>
       <Navbar />
-      <p>Reportez votre rendez-vous</p>
+
       <Form
         name="control-ref"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        className="inscriC"
+        className="report"
       >
+        <p className="pa">Reportez votre rendez-vous</p>
         <Form.Item
           name="CIN"
           label="CIN:"
@@ -36,7 +37,7 @@ function reportRdv() {
         >
           <Input />
         </Form.Item>
-        <Button type="primary" block htmlType="submit" shape="round">
+        <Button type="primary" htmlType="submit" shape="round" className="bt">
           Reporter
         </Button>
       </Form>
