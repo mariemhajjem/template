@@ -1,5 +1,7 @@
 import "./Faq.css";
 import { Row, Col } from "antd";
+import React from 'react'
+
 import {
   BarChartOutlined,
   QuestionCircleOutlined,

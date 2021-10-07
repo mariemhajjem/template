@@ -1,5 +1,7 @@
 import "./Stat.css";
 import { Row, Col } from "antd";
+import React from 'react'
+
 import {
   CheckCircleOutlined,
   HighlightOutlined,

@@ -1,10 +1,13 @@
 import SideBar from "../../SideBar/SideBar";
+
+import React from "react";
+
 function ManageCenter() {
   return (
     <div>
-      <SideBar />
-      aaaa
-    </div>
+      <SideBar />  
+      aaaaaaaaaa
+     </div>
   );
 }
 

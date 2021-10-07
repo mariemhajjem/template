@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SideBar.css";
 import { Layout, Menu } from "antd";
 import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+
 import { Link } from "react-router-dom";
 const { Header, Content, Sider } = Layout;
 
@@ -38,15 +39,7 @@ function SideBar() {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: "0 16px" }}>
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
-            ></div>
-          </Content>
-        </Layout>
+       
       </Layout>
     </div>
   );

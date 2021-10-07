@@ -1,6 +1,8 @@
 import Navbar from "../Navbar/Navbar";
 import { Form, Input, Button } from "antd";
 import "./updateInscri.css";
+import React from 'react'
+
 function updateInscri() {
   return (
     <div>

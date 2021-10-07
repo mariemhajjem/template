@@ -2,6 +2,8 @@ import Navbar from "../Navbar/Navbar";
 import "./inscriptionPharmacie.css";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Select } from "antd";
+import React from 'react'
+
 
 function inscriptionPharmacie() {
   return (
