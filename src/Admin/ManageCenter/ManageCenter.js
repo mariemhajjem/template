@@ -1,8 +1,8 @@
 import SideBar from "../../SideBar/SideBar";
-
+import AddCenter from "./AddCenter/AddCenter";
 import { Layout, Menu, Breadcrumb } from "antd";
-import { Form, Input, Select, InputNumber } from "antd";
-import { Modal, Button } from "antd";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCenters } from "../../redux/actions/CenterAction";
+import { deleteCenter } from "../../services/center.service";
 const { Header, Content, Sider, Footer } = Layout;
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -33,24 +34,15 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 function ManageCenter() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
   const centers = useSelector((state) => state.centers);
 
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
+
+  const handleDeleteCenter = async (center_id) => {
+    dispatch(deleteCenter(center_id));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,61 +72,7 @@ function ManageCenter() {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              <Button type="primary" onClick={showModal}>
-                Add new center
-              </Button>
-              <Modal
-                title="Add new center"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-              >
-                <Form
-                  name="control-ref"
-                  labelCol={{ span: 4 }}
-                  wrapperCol={{ span: 14 }}
-                  layout="horizontal"
-                >
-                  <Form.Item
-                    name="Name"
-                    label="Name:"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Province"
-                    name="Province"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                  >
-                    <Select>
-                      <Select.Option value="Tunis">Tunis</Select.Option>
-                      <Select.Option value="Manouba">Manouba</Select.Option>
-                      <Select.Option value="Ben Arous">Ben Arous</Select.Option>
-                      <Select.Option value="Marsa">Marsa</Select.Option>
-                    </Select>
-                  </Form.Item>
-                  <Form.Item
-                    label="Capacity:"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                    name="Capacity"
-                  >
-                    <Input />
-                  </Form.Item>
-                </Form>
-              </Modal>
+              <AddCenter />
               <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
@@ -161,6 +99,15 @@ function ManageCenter() {
                         {center.center_capacity}
                       </StyledTableCell>
                       <StyledTableCell>{center.number_vaccine}</StyledTableCell>
+                      <StyledTableCell>
+                        {/* <UpdateCategoryModal category={category} /> */}
+
+                        <IconButton
+                          onClick={() => handleDeleteCenter(center._id)}
+                        >
+                          <DeleteIcon className="btnColorDelete" />
+                        </IconButton>
+                      </StyledTableCell>
                     </StyledTableRow>
                   ))}
                 </TableBody>
