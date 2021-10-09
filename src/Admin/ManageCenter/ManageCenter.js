@@ -11,8 +11,8 @@ import TableRow from "@material-ui/core/TableRow";
 import React, { useEffect, useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCenters } from "../../redux/actions/CenterAction";
-import { deleteCenter } from "../../services/center.service";
+import { fetchCenters,deleteCenter } from "../../redux/actions/CenterAction";
+
 const { Header, Content, Sider, Footer } = Layout;
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -77,12 +77,13 @@ function ManageCenter() {
                 <TableHead>
                   <TableRow>
                     <TableCell>#</TableCell>
-                    <TableCell>id</TableCell>
-                    <TableCell>name</TableCell>
-                    <TableCell>province</TableCell>
-                    <TableCell>capacity</TableCell>
-                    <TableCell>vac number</TableCell>
-                    <TableCell>vac type</TableCell>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Gouvernorat</TableCell>
+                    <TableCell>Capacity</TableCell> 
+                    <TableCell>Vac-Type</TableCell>
+                    <TableCell>Vac-Stock</TableCell>
+                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -98,7 +99,9 @@ function ManageCenter() {
                       <StyledTableCell>
                         {center.center_capacity}
                       </StyledTableCell>
-                      <StyledTableCell>{center.number_vaccine}</StyledTableCell>
+                      
+                      <StyledTableCell>-</StyledTableCell> 
+                      <StyledTableCell>-</StyledTableCell> 
                       <StyledTableCell>
                         {/* <UpdateCategoryModal category={category} /> */}
 
