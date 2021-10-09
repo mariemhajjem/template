@@ -192,9 +192,13 @@
 //   );
 // }
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Formik } from "formik";
 import { Modal, Button } from "antd";
 import { Form, Input, Select, InputNumber } from "antd";
+import { addCenter } from "../../../redux/actions/CenterAction";
 function AddCenter() {
+  const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
@@ -207,85 +211,134 @@ function AddCenter() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  const [message, setMessage] = useState();
+  const [typeMessage, setTypeMessage] = useState();
+  const handleAddCenter = async (values) => {
+    await dispatch(addCenter(values.center_name)).then((result) => {
+      console.log(result);
+      if (result === false) {
+        setMessage("Center name exist ");
+        setTypeMessage("error");
+      } else {
+        setMessage("Success add center");
+        setTypeMessage("success");
+      }
+    });
+  };
+
   return (
     <div>
       <Button type="primary" onClick={showModal}>
         Add new center
       </Button>
-      <Modal
-        title="Add new center"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
+      <Formik
+        initialValues={{
+          center_name: "",
+        }}
+        onSubmit={(values) => {
+          handleAddCenter(values);
+        }}
       >
-        <Form
-          name="control-ref"
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 14 }}
-          layout="horizontal"
-        >
-          <Form.Item
-            name="Name"
-            label="Name:"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Gouvernorat"
-            name="Gouvernorat"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Select>
-              <Select.Option value="Ariana">Ariana</Select.Option>
-              <Select.Option value="Beja">Beja</Select.Option>
-              <Select.Option value="Ben Arous">Ben Arous</Select.Option>
-              <Select.Option value="Bizerte">Bizerte</Select.Option>
-              <Select.Option value="Gabes">Gabes</Select.Option>
-              <Select.Option value="Gafsa">Gafsa</Select.Option>
-              <Select.Option value="Jendouba">Jendouba</Select.Option>
-              <Select.Option value="Kairouan">Kairouan</Select.Option>
-              <Select.Option value="Kasserine">Kasserine</Select.Option>
-              <Select.Option value="Kebili">Kebeli</Select.Option>
-              <Select.Option value="Le kef">Le kef</Select.Option>
-              <Select.Option value="Mahdia">Mahdia</Select.Option>
+        {(formik) => {
+          const {
+            handleSubmit,
+            values,
+            handleChange,
+            setFieldValue,
+            handleBlur,
+          } = formik;
 
-              <Select.Option value="Manouba">La Manouba</Select.Option>
-              <Select.Option value="Medenine">Medenine</Select.Option>
-              <Select.Option value="Monastir">Monastir</Select.Option>
-              <Select.Option value="Nabeul">Nabeul</Select.Option>
-              <Select.Option value="Sfax">Sfax</Select.Option>
-              <Select.Option value="Sidi Bouzid">Sidi Bouzid</Select.Option>
-              <Select.Option value="Siliana">Siliana</Select.Option>
-              <Select.Option value="Sousse">Sousse</Select.Option>
-              <Select.Option value="Tataouine">Tataouine</Select.Option>
-              <Select.Option value="Tozeur">Tozeur</Select.Option>
+          return (
+            <Modal
+              title="Add new center"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <Form
+                name="control-ref"
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 14 }}
+                layout="horizontal"
+                initialValues={{
+                  center_name: "",
+                }}
+                onSubmit={(values) => {
+                  handleAddCenter(values);
+                }}
+              >
+                <Form.Item
+                  value={values.center_name}
+                  onChange={handleChange("center_name")}
+                  name="Name"
+                  label="Name:"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
+                >
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="Gouvernorat"
+                  name="Gouvernorat"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
+                >
+                  <Select>
+                    <Select.Option value="Ariana">Ariana</Select.Option>
+                    <Select.Option value="Beja">Beja</Select.Option>
+                    <Select.Option value="Ben Arous">Ben Arous</Select.Option>
+                    <Select.Option value="Bizerte">Bizerte</Select.Option>
+                    <Select.Option value="Gabes">Gabes</Select.Option>
+                    <Select.Option value="Gafsa">Gafsa</Select.Option>
+                    <Select.Option value="Jendouba">Jendouba</Select.Option>
+                    <Select.Option value="Kairouan">Kairouan</Select.Option>
+                    <Select.Option value="Kasserine">Kasserine</Select.Option>
+                    <Select.Option value="Kebili">Kebeli</Select.Option>
+                    <Select.Option value="Le kef">Le kef</Select.Option>
+                    <Select.Option value="Mahdia">Mahdia</Select.Option>
 
-              <Select.Option value="Tunis">Tunis</Select.Option>
-              <Select.Option value="Zaghouan">Zaghouan</Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label="Capacity:"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-            name="Capacity"
-          >
-            <Input />
-          </Form.Item>
-        </Form>
-      </Modal>
+                    <Select.Option value="Manouba">La Manouba</Select.Option>
+                    <Select.Option value="Medenine">Medenine</Select.Option>
+                    <Select.Option value="Monastir">Monastir</Select.Option>
+                    <Select.Option value="Nabeul">Nabeul</Select.Option>
+                    <Select.Option value="Sfax">Sfax</Select.Option>
+                    <Select.Option value="Sidi Bouzid">
+                      Sidi Bouzid
+                    </Select.Option>
+                    <Select.Option value="Siliana">Siliana</Select.Option>
+                    <Select.Option value="Sousse">Sousse</Select.Option>
+                    <Select.Option value="Tataouine">Tataouine</Select.Option>
+                    <Select.Option value="Tozeur">Tozeur</Select.Option>
+
+                    <Select.Option value="Tunis">Tunis</Select.Option>
+                    <Select.Option value="Zaghouan">Zaghouan</Select.Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="Capacity:"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
+                  name="Capacity"
+                >
+                  <Input />
+                </Form.Item>
+                <Button color="warning" type="submit" simple>
+                  Save center
+                </Button>
+              </Form>
+            </Modal>
+          );
+        }}
+      </Formik>
     </div>
   );
 }
