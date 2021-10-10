@@ -13,7 +13,7 @@ export const getCenter = async () => {
 export const addCenter = async center_name => {
 
 
-  const result = await http.post("/center/addCenter", { center_name })
+  const result = await http.post("/center/addCenter",  center_name)
   return result.data
 }
 

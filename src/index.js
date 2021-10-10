@@ -10,13 +10,12 @@ import store from './redux/store';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  
     <Suspense fallback="loading">
       <Provider store={store}>
       <App />
       </Provider>
-    </Suspense>
-  </React.StrictMode>,
+    </Suspense>,
   document.getElementById("root")
 );
 

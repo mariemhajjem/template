@@ -79,7 +79,8 @@ function ManageCenter() {
                     <TableCell>#</TableCell>
                     <TableCell>ID</TableCell>
                     <TableCell>Name</TableCell>
-                    <TableCell>Gouvernorat</TableCell>
+                    <TableCell>Gouvernorat</TableCell> 
+                    <TableCell>Ville</TableCell>
                     <TableCell>Capacity</TableCell> 
                     <TableCell>Vac-Type</TableCell>
                     <TableCell>Vac-Stock</TableCell>
@@ -94,7 +95,10 @@ function ManageCenter() {
 
                       <StyledTableCell>{center.center_name}</StyledTableCell>
                       <StyledTableCell>
-                        {center.center_province}
+                        {center.gouvernorat}
+                      </StyledTableCell> 
+                      <StyledTableCell>
+                        {center.ville}
                       </StyledTableCell>
                       <StyledTableCell>
                         {center.center_capacity}
