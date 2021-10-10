@@ -14,8 +14,20 @@ function AddCenter() {
 
   
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const [state, setState] = useState({
+    center_name: "",
+    // gouvernorat: "",
+
+    // center_capacity: "",
+  });
+
+  const [error, setError] = useState("");
+  let dispatch = useDispatch();
+  const { center_name } = state;
+
+  const handleInputChange = (e) => {
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
   };
  
   const [state, setState] = useState({

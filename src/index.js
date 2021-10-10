@@ -5,17 +5,24 @@ import App from "./App";
 import "./i18n";
 
 import reportWebVitals from "./reportWebVitals";
-import { Provider } from 'react-redux';
-import store from './redux/store';
-
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
+<<<<<<< HEAD
   
     <Suspense fallback="loading">
       <Provider store={store}>
       <App />
       </Provider>
     </Suspense>,
+=======
+  <Suspense fallback="loading">
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Suspense>,
+>>>>>>> ea762eca40101ba2566e2599fe387990bfca3063
   document.getElementById("root")
 );
 

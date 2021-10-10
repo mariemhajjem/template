@@ -1,6 +1,6 @@
 import SideBar from "../../SideBar/SideBar";
 import AddCenter from "./AddCenter/AddCenter";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout } from "antd";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import Table from "@material-ui/core/Table";
@@ -9,11 +9,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import React, { useEffect, useState } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCenters,deleteCenter } from "../../redux/actions/CenterAction";
+import { fetchCenters, deleteCenter } from "../../redux/actions/CenterAction";
 
-const { Header, Content, Sider, Footer } = Layout;
+const { Content } = Layout;
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: "#DDD",
@@ -79,12 +79,16 @@ function ManageCenter() {
                     <TableCell>#</TableCell>
                     <TableCell>ID</TableCell>
                     <TableCell>Name</TableCell>
+<<<<<<< HEAD
                     <TableCell>Gouvernorat</TableCell> 
                     <TableCell>Ville</TableCell>
                     <TableCell>Capacity</TableCell> 
+=======
+                    <TableCell>Gouvernorat</TableCell>
+                    <TableCell>Capacity</TableCell>
+>>>>>>> ea762eca40101ba2566e2599fe387990bfca3063
                     <TableCell>Vac-Type</TableCell>
                     <TableCell>Vac-Stock</TableCell>
-                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -103,9 +107,9 @@ function ManageCenter() {
                       <StyledTableCell>
                         {center.center_capacity}
                       </StyledTableCell>
-                      
-                      <StyledTableCell>-</StyledTableCell> 
-                      <StyledTableCell>-</StyledTableCell> 
+
+                      <StyledTableCell>-</StyledTableCell>
+                      <StyledTableCell>-</StyledTableCell>
                       <StyledTableCell>
                         {/* <UpdateCategoryModal category={category} /> */}
 
