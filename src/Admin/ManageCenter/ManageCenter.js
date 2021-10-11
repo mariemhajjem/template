@@ -1,6 +1,6 @@
 import SideBar from "../../SideBar/SideBar";
 import AddCenter from "./AddCenter/AddCenter";
-import { Layout } from "antd";
+import { Layout, Button } from "antd";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import Table from "@material-ui/core/Table";
@@ -10,8 +10,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCenters, deleteCenter } from "../../redux/actions/CenterAction";
 
 const { Content } = Layout;
 const StyledTableCell = withStyles((theme) => ({
@@ -34,34 +32,6 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 function ManageCenter() {
-  const centers = useSelector((state) => state.centers);
-
-  const dispatch = useDispatch();
-
-  const [loading, setLoading] = useState(true);
-
-  const handleDeleteCenter = async (center_id) => {
-    dispatch(deleteCenter(center_id));
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-
-        await dispatch(fetchCenters());
-
-        setLoading(false);
-      } catch (e) {
-        setLoading(false);
-        console.log("An error occurred when we tried to fetch centers");
-      }
-    };
-    console.log("useEffect");
-
-    fetchData();
-  }, []);
-
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
@@ -86,32 +56,23 @@ function ManageCenter() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {centers.map((center, index) => (
-                    <StyledTableRow key={center._id}>
-                      <StyledTableCell> {index}</StyledTableCell>
-                      <StyledTableCell> {center._id}</StyledTableCell>
+                  <StyledTableRow>
+                    <StyledTableCell> </StyledTableCell>
+                    <StyledTableCell> </StyledTableCell>
 
-                      <StyledTableCell>{center.center_name}</StyledTableCell>
-                      <StyledTableCell>
-                        {center.center_province}
-                      </StyledTableCell>
-                      <StyledTableCell>
-                        {center.center_capacity}
-                      </StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
 
-                      <StyledTableCell>-</StyledTableCell>
-                      <StyledTableCell>-</StyledTableCell>
-                      <StyledTableCell>
-                        {/* <UpdateCategoryModal category={category} /> */}
-
-                        <IconButton
-                          onClick={() => handleDeleteCenter(center._id)}
-                        >
-                          <DeleteIcon className="btnColorDelete" />
-                        </IconButton>
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
+                    <StyledTableCell>-</StyledTableCell>
+                    <StyledTableCell>-</StyledTableCell>
+                    <StyledTableCell>
+                      <Button>Update </Button>
+                      <IconButton>
+                        <DeleteIcon className="btnColorDelete" />
+                      </IconButton>
+                    </StyledTableCell>
+                  </StyledTableRow>
                 </TableBody>
               </Table>
             </div>

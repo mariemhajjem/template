@@ -6,13 +6,10 @@ import "./i18n";
 
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import store from "./redux/store";
 
 ReactDOM.render(
   <Suspense fallback="loading">
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </Suspense>,
   document.getElementById("root")
 );
