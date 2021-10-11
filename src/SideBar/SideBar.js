@@ -19,18 +19,18 @@ function SideBar() {
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
-            <Link to="/Admin"> Stats</Link>
+            <Link exact to="/Admin"> Stats</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<DesktopOutlined />}>
-            <Link to="/ManageCenter">Gestion des centres</Link>
+            <Link exact to="/ManageCenter">Gestion des centres</Link>
           </Menu.Item>
 
           <Menu.Item key="3" icon={<DesktopOutlined />}>
-            <Link to="/ManagePh">Gestion des pharmacies</Link>
+            <Link exact to="/ManagePh">Gestion des pharmacies</Link>
           </Menu.Item>
 
           <Menu.Item key="4" icon={<DesktopOutlined />}>
-            <Link to="/ManageVac">Gestion des vaccins</Link>
+            <Link exact to="/ManageVac">Gestion des vaccins</Link>
           </Menu.Item>
 
           <Menu.Item key="5" icon={<DesktopOutlined />}>

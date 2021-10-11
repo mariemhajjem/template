@@ -9,21 +9,13 @@ function AddCenter() {
     setIsModalVisible(true);
   };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
   return (
     <div>
       <Button type="primary" onClick={showModal}>
         Add new center
       </Button>
 
-      <Modal
-        title="Add new center"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-      >
+      <Modal title="Add new center" visible={isModalVisible}>
         <Form
           name="control-ref"
           labelCol={{ span: 6 }}

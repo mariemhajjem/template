@@ -50,6 +50,7 @@ function ManageCenter() {
                     <TableCell>ID</TableCell>
                     <TableCell>Name</TableCell>
                     <TableCell>Gouvernorat</TableCell>
+                    <TableCell>Ville</TableCell>
                     <TableCell>Capacity</TableCell>
                     <TableCell>Vac-Type</TableCell>
                     <TableCell>Vac-Stock</TableCell>
